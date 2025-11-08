@@ -1,11 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jonathan Funke-Kaiser — Computer Science Student</title>
+  <meta name="description" content="Digital calling card for Jonathan Funke-Kaiser — Computer Science student. GitHub + email." />
+
+  <meta property="og:title" content="Jonathan Funke-Kaiser — Computer Science Student" />
+  <meta property="og:description" content="Minimal digital calling card with links to GitHub and email." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://funkekaiser.com/" />
+  <meta property="og:image" content="https://funkekaiser.com/og-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root { --bg:#0b0c10; --fg:#e7e7ea; --muted:#a1a1a8; --card:#111318cc; --border:#2a2d34; --accent:#6ea8fe; --link:#b1d0ff; }
+    @media (prefers-color-scheme: light){ :root{ --bg:#fafafa; --fg:#121316; --muted:#585c63; --card:#ffffffcc; --border:#e4e4e6; --accent:#305dfb; --link:#1f4be6; } }
+
+    *{ box-sizing:border-box; }
+    body{ margin:0; background:var(--bg); min-height:100vh; display:flex; justify-content:center; align-items:center; padding:32px; font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color:var(--fg); }
+
+    .card{ width:min(620px, 92vw); background:var(--card); padding:30px; border-radius:18px; border:1px solid var(--border); backdrop-filter:blur(6px); box-shadow:0 10px 28px rgba(0,0,0,.28); }
+
+    .top{ display:flex; align-items:center; gap:18px; }
+
+    .avatar{ width:62px; height:62px; border-radius:14px; font-weight:700; display:grid; place-items:center; background:linear-gradient(135deg,#5a8fff,#00d5ff); color:#0b0c10; }
+
+    h1{ margin:0; font-size:1.55rem; }
+    .tag{ margin-top:2px; color:var(--muted); }
+    .domain{ margin-top:6px; font-size:.93rem; color:var(--muted); }
+
+    .links{ margin-top:22px; display:flex; flex-wrap:wrap; gap:12px; }
+    .links a{ text-decoration:none; color:var(--fg); padding:11px 16px; border-radius:12px; border:1px solid var(--border); transition:.15s; }
+    .links a:hover{ border-color:var(--accent); transform:translateY(-1px); }
+
+    footer{ margin-top:26px; padding-top:16px; border-top:1px solid var(--border); color:var(--muted); font-size:.85rem; display:flex; justify-content:space-between; }
+  </style>
 </head>
 <body>
-    <h1>Hello World</h1>
+  <main class="card">
+    <div class="top">
+      <div class="avatar">FK</div>
+      <div>
+        <h1>Jonathan Funke-Kaiser</h1>
+        <p class="tag">Computer Science Student</p>
+        <p class="domain">funkekaiser.com</p>
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="mailto:jonathan@funkekaiser.com">Email</a>
+      <a href="https://github.com/funkekaiser" target="_blank" rel="noopener">GitHub</a>
+    </div>
+
+    <footer>
+      <span>© <span id="y"></span> Jonathan Funke-Kaiser</span>
+      <span>Vienna · AT</span>
+    </footer>
+  </main>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
