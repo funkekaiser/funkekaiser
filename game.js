@@ -1,4 +1,7 @@
 (function(){
+  const ballImg = new Image();
+  ballImg.src = 'head.png';
+  let ballAngle = 0; // rotation accumulator
   const smallScreen = window.matchMedia('(max-width: 600px)').matches;
   if (smallScreen) {
     const c = document.getElementById('pong');
@@ -27,7 +30,7 @@
     const ph = Math.max(70, Math.floor(H * 0.22));
     const pw = Math.max(10, Math.floor(H * 0.028));
     const pm = Math.max(12, Math.floor(W * 0.025));
-    const br = Math.max(6, Math.floor(H * 0.018));
+    const br = Math.max(20, Math.floor(H * 0.06));
     return { paddleW: pw, paddleH: ph, paddleMargin: pm, ballR: br };
   }
 
@@ -178,6 +181,8 @@
     // Ball
     ball.x += ball.vx * dt;
     ball.y += ball.vy * dt;
+    // Increase rotation based on speed
+    ballAngle += Math.hypot(ball.vx, ball.vy) * 0.002;
 
     // Walls
     if (ball.y - ballR < 0 && ball.vy < 0){ ball.y = ballR; ball.vy *= -1; }
@@ -229,7 +234,15 @@
     ctx.fillStyle = '#e7e7ea';
     ctx.fillRect(left.x, left.y, left.w, left.h);
     ctx.fillRect(right.x, right.y, right.w, right.h);
-    ctx.beginPath(); ctx.arc(ball.x, ball.y, ballR, 0, Math.PI*2); ctx.fill();
+    if (ballImg.complete) {
+      ctx.save();
+      ctx.translate(ball.x, ball.y);
+      ctx.rotate(ballAngle);
+      ctx.drawImage(ballImg, -ballR, -ballR, ballR * 2, ballR * 2);
+      ctx.restore();
+    } else {
+      ctx.beginPath(); ctx.arc(ball.x, ball.y, ballR, 0, Math.PI*2); ctx.fill();
+    }
 
     // Score
     ctx.fillStyle = '#a1a1a8';
