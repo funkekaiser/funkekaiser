@@ -1,5 +1,12 @@
 
 (function(){
+  const isMobile = window.matchMedia('(pointer: coarse), (max-width: 768px)').matches;
+  if (isMobile) {
+    const c = document.getElementById('pong');
+    if (c) c.style.display = 'none';
+    // Let the page scroll naturally; no game setup
+    return;
+  }
   const canvas = document.getElementById('pong');
   const ctx = canvas.getContext('2d');
 
