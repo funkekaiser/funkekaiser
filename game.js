@@ -1,9 +1,9 @@
 (function(){
-  const isMobile = window.matchMedia('(pointer: coarse), (max-width: 768px)').matches;
-  if (isMobile) {
+  const smallScreen = window.matchMedia('(max-width: 600px)').matches;
+  if (smallScreen) {
     const c = document.getElementById('pong');
     if (c) c.style.display = 'none';
-    // Let the page scroll naturally; no game setup
+    // Plain text/mobile layout only on small screens
     return;
   }
   const canvas = document.getElementById('pong');
@@ -77,6 +77,12 @@
   const keys = new Set();
   let mouseY = null;
   window.addEventListener('pointermove', (e)=>{ mouseY = e.clientY; });
+  // Also capture initial touch/pen press and finger drags
+  window.addEventListener('pointerdown', (e)=>{ mouseY = e.clientY; });
+  window.addEventListener('touchmove', (e)=>{
+    const t = e.touches && e.touches[0];
+    if (t) mouseY = t.clientY;
+  }, { passive: true });
   window.addEventListener('keydown', (e)=>{
     if (["Space","KeyR"].includes(e.code)) e.preventDefault();
     keys.add(e.code);

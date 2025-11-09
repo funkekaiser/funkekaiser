@@ -21,7 +21,7 @@ h1{ margin:0; font-size:1.4rem; }
 .mobile-info { display: none; }
 
 /* Mobile: disable game background and focus on the card */
-@media (pointer: coarse), (max-width: 768px) {
+@media (max-width: 600px) {
   body { display: block; overflow: auto; background:#0b0c10; }
   canvas { display: none !important; }
   .hud { display: none; }
