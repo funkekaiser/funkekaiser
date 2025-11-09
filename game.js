@@ -1,6 +1,6 @@
 (function(){
   const ballImg = new Image();
-  ballImg.src = 'head.png';
+  ballImg.src = 'images/head.png';
   let ballAngle = 0; // rotation accumulator
   const smallScreen = window.matchMedia('(max-width: 600px)').matches;
   if (smallScreen) {
