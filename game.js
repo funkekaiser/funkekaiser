@@ -253,7 +253,7 @@
     if (!running){
       ctx.fillStyle = '#6ea8fe';
       ctx.font = '20px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
-      ctx.fillText('Paused — press Space', W/2, 80);
+      ctx.fillText('Paused — press Space or Double-tap', W/2, 80);
     }
 
     if (scoreL >= winScore || scoreR >= winScore){
