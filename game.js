@@ -1,4 +1,3 @@
-
 (function(){
   const isMobile = window.matchMedia('(pointer: coarse), (max-width: 768px)').matches;
   if (isMobile) {
