@@ -79,6 +79,24 @@
   window.addEventListener('pointermove', (e)=>{ mouseY = e.clientY; });
   // Also capture initial touch/pen press and finger drags
   window.addEventListener('pointerdown', (e)=>{ mouseY = e.clientY; });
+  // Double‑tap toggles pause / restart
+  let lastTap = 0;
+  window.addEventListener('pointerdown', (e)=>{
+    const now = Date.now();
+    if (now - lastTap < 300) {
+      // Treat as Space key
+      if (!running && (scoreL >= winScore || scoreR >= winScore)){
+        fullReset();
+        running = true;
+        lastTime = performance.now();
+        requestAnimationFrame(loop);
+      } else {
+        running = !running;
+        if (running){ lastTime = performance.now(); requestAnimationFrame(loop);} else { draw(); }
+      }
+    }
+    lastTap = now;
+  });
   window.addEventListener('touchmove', (e)=>{
     const t = e.touches && e.touches[0];
     if (t) mouseY = t.clientY;
