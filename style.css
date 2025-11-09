@@ -1,45 +1,79 @@
+:root{
+  /* App surface (light) */
+  --bg: #f7f7f8;
+  --fg: #0b0c10;
+  --muted: #565b66;
+  --accent: #2f6bff;
+  --panel: rgba(255,255,255,0.72);
+  --panel-border: #d9dbe1;
+  --shadow: rgba(0,0,0,.12);
+  /* Game colors (light) */
+  --game-bg: #f7f7f8;
+  --game-line: #d0d3da;
+  --game-entity: #111318;
+  --game-score: #565b66;
+  --game-accent: #2f6bff;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #000000;
+    --fg: #e7e7ea;
+    --muted: #a1a1a8;
+    --accent: #6ea8fe;
+    --panel: rgba(17,19,24,0.62);
+    --panel-border: #2a2d34;
+    --shadow: rgba(0,0,0,.28);
+    --game-bg: #000000;
+    --game-line: #333333;
+    --game-entity: #e7e7ea;
+    --game-score: #a1a1a8;
+    --game-accent: #6ea8fe;
+  }
+}
+
 /* Full-screen background game */
 html, body { height: 100vh; height: 100dvh; overscroll-behavior: none; }
-body { margin: 0; background: #000; overflow: hidden; display: grid; place-items: center; }
+body { margin: 0; background: var(--bg); overflow: hidden; display: grid; place-items: center; }
 canvas { position: fixed; inset: 0; width: 100vw; width: 100dvw; height: 100vh; height: 100dvh; display: block; z-index: 0; pointer-events: none; }
 
 /* Floating card */
-.card{ z-index: 2; width:min(640px, 92vw); background:rgba(17,19,24,0.62); padding:28px; border-radius:18px; border:1px solid #2a2d34; backdrop-filter: blur(8px); color:#e7e7ea; font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; box-shadow:0 10px 28px rgba(0,0,0,.28); }
+.card{ z-index: 2; width:min(640px, 92vw); background: var(--panel); padding:28px; border-radius:18px; border:1px solid var(--panel-border); backdrop-filter: blur(8px); color:var(--fg); font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; box-shadow:0 10px 28px var(--shadow); }
 .top{ display:flex; align-items:center; gap:16px; }
-.avatar{ width:56px; height:56px; border-radius:12px; background:linear-gradient(135deg,#5a8fff,#00d5ff); color:#0b0c10; font-weight:700; display:grid; place-items:center; }
+.avatar{ width:56px; height:56px; border-radius:12px; background:linear-gradient(135deg,#5a8fff,#00d5ff); color:var(--bg); font-weight:700; display:grid; place-items:center; }
 h1{ margin:0; font-size:1.4rem; }
-.tag{ margin-top:2px; color:#a1a1a8; }
+.tag{ margin-top:2px; color:var(--muted); }
 .links{ margin-top:18px; display:flex; flex-wrap:wrap; gap:12px; }
-.links a{ text-decoration:none; color:#e7e7ea; padding:10px 14px; border-radius:12px; border:1px solid #2a2d34; transition:.15s; }
-.links a:hover{ border-color:#6ea8fe; transform:translateY(-1px); }
+.links a{ text-decoration:none; color:var(--fg); padding:10px 14px; border-radius:12px; border:1px solid var(--panel-border); transition:.15s; }
+.links a:hover{ border-color:var(--accent); transform:translateY(-1px); }
 
 /* Minimal HUD (top-left) */
-.hud { position: fixed; left: 12px; top: 10px; color: #a1a1a8; font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; user-select: none; pointer-events: none; z-index: 1; }
-.hud strong { color: #e7e7ea; }
+.hud { position: fixed; left: 12px; top: 10px; color: var(--muted); font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; user-select: none; pointer-events: none; z-index: 1; }
+.hud strong { color: var(--fg); }
 
 /* Hidden on desktop; shown on mobile */
 .mobile-info { display: none; }
 
 /* Mobile: disable game background and focus on the card */
 @media (max-width: 600px) {
-  body { display: block; overflow: auto; background:#0b0c10; }
+  body { display: block; overflow: auto; background: var(--bg); }
   canvas { display: none !important; }
   .hud { display: none; }
   .card {
     width: min(720px, 94vw);
     margin: min(10vh, 48px) auto;
     padding: 22px;
-    background: rgba(17,19,24,0.9);
+    background: var(--panel);
     border-radius: 16px;
-    border: 1px solid #2a2d34;
+    border: 1px solid var(--panel-border);
     backdrop-filter: none;
-    box-shadow: 0 10px 28px rgba(0,0,0,.28);
+    box-shadow: 0 10px 28px var(--shadow);
     display: none;
   }
   .links a { padding: 12px 16px; }
-  .mobile-info { display:block; max-width: 720px; margin: min(10vh, 48px) auto; padding: 20px 18px; color:#e7e7ea; font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+  .mobile-info { display:block; max-width: 720px; margin: min(10vh, 48px) auto; padding: 20px 18px; color:var(--fg); font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
   .mobile-info h1 { margin: 0 0 6px; font-size: 1.4rem; }
-  .mobile-info .tag { color:#a1a1a8; margin: 0 0 14px; }
-  .mobile-info a { color:#b1d0ff; text-decoration: none; }
+  .mobile-info .tag { color:var(--muted); margin: 0 0 14px; }
+  .mobile-info a { color:var(--accent); text-decoration: none; }
   .mobile-info a:hover { text-decoration: underline; }
 }

@@ -10,6 +10,28 @@
     return;
   }
   const canvas = document.getElementById('pong');
+
+  // Theme colors read from CSS variables
+  let COLORS = {
+    bg: '#000000',
+    line: '#333333',
+    entity: '#e7e7ea',
+    score: '#a1a1a8',
+    accent: '#6ea8fe'
+  };
+  function readTheme(){
+    const cs = getComputedStyle(document.documentElement);
+    const v = (name)=> cs.getPropertyValue(name).trim() || null;
+    COLORS.bg     = v('--game-bg')     || COLORS.bg;
+    COLORS.line   = v('--game-line')   || COLORS.line;
+    COLORS.entity = v('--game-entity') || COLORS.entity;
+    COLORS.score  = v('--game-score')  || COLORS.score;
+    COLORS.accent = v('--game-accent') || COLORS.accent;
+  }
+  readTheme();
+  const darkMedia = window.matchMedia('(prefers-color-scheme: dark)');
+  darkMedia.addEventListener('change', ()=>{ readTheme(); draw(); });
+
   const ctx = canvas.getContext('2d');
 
   // Device-pixel-ratio aware sizing
@@ -23,7 +45,7 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0); // draw in CSS pixels
   }
   fitCanvas();
-  window.addEventListener('resize', ()=>{ fitCanvas(); centerAndServe(Math.random() < .5 ? 1 : -1); draw(); });
+  window.addEventListener('resize', ()=>{ readTheme(); fitCanvas(); centerAndServe(Math.random() < .5 ? 1 : -1); draw(); });
 
   // Game params (scaled off height)
   function dims(){
@@ -215,11 +237,11 @@
 
   function drawCourt(){
     // Background
-    ctx.fillStyle = '#000';
+    ctx.fillStyle = COLORS.bg;
     ctx.fillRect(0,0,W,H);
     // Center dashed line
     ctx.setLineDash([8,10]);
-    ctx.strokeStyle = '#333';
+    ctx.strokeStyle = COLORS.line;
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(W/2,0); ctx.lineTo(W/2,H); ctx.stroke();
@@ -231,7 +253,7 @@
     drawCourt();
 
     // Entities
-    ctx.fillStyle = '#e7e7ea';
+    ctx.fillStyle = COLORS.entity;
     ctx.fillRect(left.x, left.y, left.w, left.h);
     ctx.fillRect(right.x, right.y, right.w, right.h);
     if (ballImg.complete) {
@@ -245,19 +267,19 @@
     }
 
     // Score
-    ctx.fillStyle = '#a1a1a8';
+    ctx.fillStyle = COLORS.score;
     ctx.font = '28px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
     ctx.textAlign = 'center';
     ctx.fillText(`${scoreL} : ${scoreR}`, W/2, 40);
 
     if (!running){
-      ctx.fillStyle = '#6ea8fe';
+      ctx.fillStyle = COLORS.accent;
       ctx.font = '20px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
       ctx.fillText('Paused — press Space or Double-tap', W/2, 80);
     }
 
     if (scoreL >= winScore || scoreR >= winScore){
-      ctx.fillStyle = '#6ea8fe';
+      ctx.fillStyle = COLORS.accent;
       ctx.font = '22px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
       const msg = scoreL > scoreR ? 'You win!' : 'CPU wins!';
       ctx.fillText(msg, W/2, 110);
