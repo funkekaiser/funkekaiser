@@ -81,7 +81,19 @@
   window.addEventListener('keydown', (e)=>{
     if (["Space","KeyR"].includes(e.code)) e.preventDefault();
     keys.add(e.code);
-    if (e.code === 'Space'){ running = !running; if (running){ lastTime = performance.now(); requestAnimationFrame(loop);} else { draw(); } }
+    if (e.code === 'Space'){
+      // If game ended (win/lose), Space resets and restarts
+      if (!running && (scoreL >= winScore || scoreR >= winScore)){
+        fullReset();
+        running = true;
+        lastTime = performance.now();
+        requestAnimationFrame(loop);
+      } else {
+        // Normal pause toggle
+        running = !running;
+        if (running){ lastTime = performance.now(); requestAnimationFrame(loop);} else { draw(); }
+      }
+    }
     if (e.code === 'KeyR'){ fullReset(); draw(); }
   });
   window.addEventListener('keyup', (e)=> keys.delete(e.code));
@@ -205,14 +217,14 @@
     if (!running){
       ctx.fillStyle = '#6ea8fe';
       ctx.font = '20px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
-      ctx.fillText('Paused — press Space', W/2, H/2 + 8);
+      ctx.fillText('Paused — press Space', W/2, 80);
     }
 
     if (scoreL >= winScore || scoreR >= winScore){
       ctx.fillStyle = '#6ea8fe';
       ctx.font = '22px system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
       const msg = scoreL > scoreR ? 'You win!' : 'CPU wins!';
-      ctx.fillText(msg, W/2, H/2 + 36);
+      ctx.fillText(msg, W/2, 110);
       running = false;
     }
   }
