@@ -1,5 +1,3 @@
-## Hi there 👋
-
 <!--
 **funkekaiser/funkekaiser** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
@@ -14,3 +12,15 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+## Hi, I'm Jonathan 👋
+
+Data Science & Philosophy student in Vienna 🇦🇹 - occasionally in California 🌊
+
+- 🔭 I'm currently working on infrastructure I shouldn't need but enjoy anyway — homelab, DNS, backups, the lot
+- 🌱 I’m currently learning data science
+- 🏠 I self-host almost everything: Docker, Caddy, Tailscale, AdGuard, Borgmatic backups to Hetzner
+- 🧠 Interested in machine learning theory, critical theory, and why those two never talk to each other
+- 🌐 Website: [funkekaiser.com](https://funkekaiser.com)
+
+---
+*"The whole is the false." - Adorno*
