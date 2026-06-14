@@ -14,7 +14,7 @@ Here are some ideas to get you started:
 -->
 ## Hi, I'm Jonathan 👋
 
-Data Science & Philosophy student in Vienna 🇦🇹 - occasionally in California 🌊
+Data Science & Philosophy student in Vienna 🇦🇹 — occasionally in California 🌊
 
 - 🔭 I'm currently working on infrastructure I shouldn't need but enjoy anyway — homelab, DNS, backups, the lot
 - 🌱 I’m currently learning data science
@@ -23,4 +23,4 @@ Data Science & Philosophy student in Vienna 🇦🇹 - occasionally in Californi
 - 🌐 Website: [funkekaiser.com](https://funkekaiser.com)
 
 ---
-*"The whole is the false." - Adorno*
+*"The meaning of a statement is its method of verification." — Moritz Schlick*
