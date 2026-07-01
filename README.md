@@ -16,11 +16,11 @@ Here are some ideas to get you started:
 
 Data Science & Philosophy student in Vienna 🇦🇹 — occasionally in California 🌊
 
-- 🔭 I'm currently working on infrastructure I shouldn't need but enjoy anyway — homelab, DNS, backups, the lot
-- 🌱 I’m currently learning data science
-- 🏠 I self-host almost everything: Docker, Caddy, Tailscale, AdGuard, Borgmatic backups to Hetzner
-- 🧠 Interested in machine learning theory, critical theory, and why those two never talk to each other
-- 🌐 Website: [funkekaiser.com](https://funkekaiser.com)
+- 🎨 [ml-on-canvas](https://funkekaiser.github.io/ml-on-canvas) — five classifiers trained live in your browser, zero dependencies
+- 🏠 I self-host almost everything: Docker, Caddy, Tailscale, AdGuard, Borgmatic → Hetzner
+- 🧠 Machine learning theory, critical theory, and why those two never talk to each other
+- 🌐 [funkekaiser.com](https://funkekaiser.com)
 
 ---
+
 *"The meaning of a statement is its method of verification." — Moritz Schlick*
