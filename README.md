@@ -1,24 +1,10 @@
-<!--
-**funkekaiser/funkekaiser** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
 ## Hi, I'm Jonathan 👋
 
-Data Science & Philosophy student in Vienna 🇦🇹 — occasionally in California 🌊
+Computer Science (data science focus) & Philosophy student in Vienna 🇦🇹 — occasionally in California 🌊
 
 - 🎨 [ml-on-canvas](https://funkekaiser.github.io/ml-on-canvas) — five classifiers trained live in your browser, zero dependencies
 - 🏠 I self-host almost everything: Docker, Caddy, Tailscale, AdGuard, Borgmatic → Hetzner
-- 🧠 Machine learning theory, critical theory, and why those two never talk to each other
+- 🧠 Machine learning theory and critical theory
 - 🌐 [funkekaiser.com](https://funkekaiser.com)
 
 ---
