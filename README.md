@@ -1,10 +1,9 @@
 ## Hi, I'm Jonathan 👋
 
-Computer Science & Philosophy student in Vienna 🇦🇹, aspiring Data Scientist — occasionally in California 🌊
+Computer Science & Philosophy student in Vienna 🇦🇹, aspiring Data Scientist
 
 - 🎨 [ml-on-canvas](https://funkekaiser.github.io/ml-on-canvas) — five classifiers trained live in your browser, zero dependencies
 - 🏠 I self-host almost everything: Docker, Caddy, Tailscale, AdGuard, Borgmatic → Hetzner
-- 🧠 Machine learning theory and critical theory
 - 🌐 [funkekaiser.com](https://funkekaiser.com)
 
 ---
